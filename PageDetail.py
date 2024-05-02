@@ -6,7 +6,7 @@ class PageDetail:
     def __init__(self, driver):
         self.driver = driver
         # Assurez-vous que "ffPrice" est le bon sélecteur pour le titre du produit
-        self.title_locator = (By.CLASS_NAME, "ffPrice")
+        self.title_locator = (By.CLASS_NAME, "RizBd")
 
     def titre_page_detail(self):
         try:
