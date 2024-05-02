@@ -1,17 +1,21 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.remote.webdriver import WebDriver
+from typing import List
 
 class SearchResultPage:
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self, driver: WebDriver) -> None:
+        """Initialise la page des résultats de recherche."""
+        self.driver: WebDriver = driver
         # Sélecteur pour les éléments de résultats de recherche
-        self.resultat_items_locator = (By.CSS_SELECTOR, "div:not(.gbox) > .items .item")
+        self.resultat_items_locator: tuple = (By.CSS_SELECTOR, "div:not(.gbox) > .items .item")
 
-    def click_premier_item(self):
+    def click_premier_item(self) -> None:
+        """Clique sur le deuxième élément de la liste des résultats."""
         try:
             # Attendre que les éléments de résultats de recherche soient visibles
-            elements = WebDriverWait(self.driver, 25).until(
+            elements: List = WebDriverWait(self.driver, 25).until(
                 EC.visibility_of_all_elements_located(self.resultat_items_locator)
             )
             if elements and len(elements) > 1:

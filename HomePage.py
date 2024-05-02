@@ -2,14 +2,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.remote.webdriver import WebDriver
 
 class HomePage:
-    def __init__(self, driver):
-        self.driver = driver
+    def __init__(self, driver: WebDriver) -> None:
+        """Initialise la page d'accueil."""
+        self.driver: WebDriver = driver
         # Identifiant de la barre de recherche
-        self.bar_de_recherche_locator = (By.ID, "str_to_search")
+        self.bar_de_recherche_locator: tuple = (By.ID, "str_to_search")
 
-    def recherche(self, texte_recherche):
+    def recherche(self, texte_recherche: str) -> None:
+        """Effectue une recherche en utilisant le texte spécifié."""
         try:
             # Attendre que la barre de recherche soit visible avant de continuer
             element = WebDriverWait(self.driver, 15).until(
